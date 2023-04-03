@@ -8,6 +8,7 @@ public class Deuda {
         String estadoDeDeuda;
         Integer userId;
 
+
         public Integer getIdDeuda() {
             return idDeuda;
         }

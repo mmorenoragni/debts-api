@@ -7,6 +7,7 @@ public class Usuario {
     String apellidoi;
     String email;
 
+
     public Integer getIdUsuario() {
         return idUsuario;
     }
