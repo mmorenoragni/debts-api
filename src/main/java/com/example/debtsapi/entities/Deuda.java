@@ -1,7 +1,12 @@
 package com.example.debtsapi.entities;
 
-public class Deuda {
+import javax.persistence.*;
 
+@Entity
+@Table(name="Deuda")
+public class Deuda {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         Integer idDeuda;
         Integer montoTotal;
         Integer montoRecuperado;

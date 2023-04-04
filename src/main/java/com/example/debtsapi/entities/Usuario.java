@@ -1,12 +1,16 @@
 package com.example.debtsapi.entities;
 
-public class Usuario {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Usuario")
+public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer idUsuario;
     String nombre;
-    String apellidoi;
+    String apellido;
     String email;
-
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -24,12 +28,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getApellidoi() {
-        return apellidoi;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setApellidoi(String apellidoi) {
-        this.apellidoi = apellidoi;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getEmail() {
