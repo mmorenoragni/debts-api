@@ -5,7 +5,6 @@ import com.example.debtsapi.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,7 +13,7 @@ public class UsuarioService {
 
 
     @Autowired
-    private UsuarioRepository repoUsuarioService;
+    private UsuarioRepository repoUsuario;
 
     //Crud Jpa
 
@@ -24,16 +23,31 @@ public class UsuarioService {
         user.setNombre(nombre);
         user.setApellido(apellido);
         user.setEmail(email);
-        repoUsuarioService.save(user);
+        repoUsuario.save(user);
     }
 
 
     public Optional<Usuario> buscarUsuario(Integer id){
-
-        Usuario user=new Usuario();
-        Optional<Usuario> usuarioJpa= repoUsuarioService.findById(id);
+        Optional<Usuario> usuarioJpa= repoUsuario.findById(id);
         return usuarioJpa;
+    }
 
+    public void modificarUsuario(String nombre, String apellido, String email,Integer id){
+
+       // Optional<Usuario> usuario= repoUsuario.save();
+        buscarUsuario(id);
+        Optional<Usuario> usuarioJpa= repoUsuario.findById(id);
+        if (usuarioJpa.isPresent()){
+            Usuario usuario = usuarioJpa.get();
+            usuario.setNombre(nombre);
+            usuario.setApellido(apellido);
+            usuario.setEmail(email);
+            repoUsuario.save(usuario);
+
+        }else System.out.println("Usuario no encontrado");
+    }
+    public void borrarUsuario(Integer id){
+        repoUsuario.deleteById(id);
     }
 
 

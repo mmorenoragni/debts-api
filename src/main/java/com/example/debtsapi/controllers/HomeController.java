@@ -29,8 +29,17 @@ public class HomeController {
         Optional<Usuario> userId= usuarioService.buscarUsuario(usuario.getIdUsuario());
 
         return userId;
-
     }
 
+    @PostMapping("/modificarUsuario")
+    public void actualizar(@RequestBody Usuario usuario){
+        usuarioService.modificarUsuario(usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getIdUsuario());
+    }
+
+    @PostMapping("/borrarUsuario")
+    public String borrar(@RequestBody Usuario usuario){
+    usuarioService.borrarUsuario(usuario.getIdUsuario());
+    return "Registro eliminado correctamente";
+    }
 
 }
