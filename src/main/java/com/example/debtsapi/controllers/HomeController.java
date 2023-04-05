@@ -19,12 +19,12 @@ public class HomeController {
     UsuarioService usuarioService;
 
     @PostMapping("/crearUsuario")
-    public void crearusuario(@RequestBody Usuario usuario){
+    public void crearUsuario(@RequestBody Usuario usuario){
       usuarioService.crearUsuario(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
     }
 
     @PostMapping("/buscarUsuario")
-    public Optional<Usuario> buscarusuario(@RequestBody Usuario usuario){
+    public Optional<Usuario> buscarUsuario(@RequestBody Usuario usuario){
 
         Optional<Usuario> userId= usuarioService.buscarUsuario(usuario.getIdUsuario());
 

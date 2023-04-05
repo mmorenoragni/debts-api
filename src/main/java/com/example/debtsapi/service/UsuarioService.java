@@ -45,6 +45,7 @@ public class UsuarioService {
             repoUsuario.save(usuario);
 
         }else System.out.println("Usuario no encontrado");
+        
     }
     public void borrarUsuario(Integer id){
         repoUsuario.deleteById(id);
