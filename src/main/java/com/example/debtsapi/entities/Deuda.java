@@ -7,11 +7,12 @@ import javax.persistence.*;
 public class Deuda {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "idDeuda")
         Integer idDeuda;
         Integer montoTotal;
         Integer montoRecuperado;
-        String estadoDeDeuda;
-        Integer userId;
+        String estado_deuda;
+        Integer iduser;
 
 
         public Integer getIdDeuda() {
@@ -38,20 +39,20 @@ public class Deuda {
             this.montoRecuperado = montoRecuperado;
         }
 
-        public String getEstadoDeDeuda() {
-            return estadoDeDeuda;
+        public String getEstado_deuda() {
+            return estado_deuda;
         }
 
-        public void setEstadoDeDeuda(String estadoDeDeuda) {
-            this.estadoDeDeuda = estadoDeDeuda;
+        public void setEstado_deuda(String estado_deuda) {
+            this.estado_deuda = estado_deuda;
         }
 
-        public Integer getUserId() {
-            return userId;
+        public Integer getIduser() {
+            return iduser;
         }
 
-        public void setUserId(Integer userId) {
-            this.userId = userId;
+        public void setIduser(Integer iduser) {
+            this.iduser = iduser;
         }
     }
 
