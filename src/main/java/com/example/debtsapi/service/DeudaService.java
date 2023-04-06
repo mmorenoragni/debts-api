@@ -36,13 +36,17 @@ public class DeudaService {
         Optional<Deuda> deudaJpa= repositorioDeuda.findById(id_Deuda);
         if(deudaJpa.isPresent()){
             Deuda deuda= deudaJpa.get();
-            deuda.setIdDeuda(id_Deuda);
+            deuda.setId(id_Deuda);
             deuda.setMontoTotal(monto_Total);
             deuda.setMontoRecuperado(monto_Recuperado);
             deuda.setEstado_deuda(estado_Deuda);
             deuda.setIduser(id_User);
             repositorioDeuda.save(deuda);
-
         }
+    }
+
+    public void eliminarDeuda(Integer id){
+            buscarDeuda(id);
+            repositorioDeuda.deleteById(id);
     }
 }

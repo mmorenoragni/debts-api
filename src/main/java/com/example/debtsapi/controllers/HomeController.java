@@ -5,6 +5,7 @@ import com.example.debtsapi.entities.Usuario;
 import com.example.debtsapi.service.DeudaService;
 import com.example.debtsapi.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,17 +59,22 @@ public class HomeController {
     @PostMapping("/buscarDeuda")
     public Optional<Deuda> buscarDeuda(@RequestBody Deuda deuda){
 
-     Optional<Deuda> deudaId=  deudaService.buscarDeuda(deuda.getIdDeuda());
+     Optional<Deuda> deudaId=  deudaService.buscarDeuda(deuda.getId());
 
      return deudaId;
     }
 
    @PostMapping("/actualizarDeuda")
     public void actualizarDeuda(@RequestBody Deuda deuda){
-        deudaService.actualizarDeuda(deuda.getIdDeuda(),deuda.getMontoTotal(), deuda.getMontoRecuperado(),
+        deudaService.actualizarDeuda(deuda.getId(),deuda.getMontoTotal(), deuda.getMontoRecuperado(),
                 deuda.getEstado_deuda(),deuda.getIduser());
    }
 
+   @DeleteMapping("/borrarDeuda")
+    public String borrarDeuda(@RequestBody Deuda deuda){
+        deudaService.eliminarDeuda(deuda.getId());
+        return "Operación realizada";
+   }
 
 
 }

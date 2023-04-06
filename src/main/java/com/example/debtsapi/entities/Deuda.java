@@ -8,19 +8,19 @@ public class Deuda {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "idDeuda")
-        Integer idDeuda;
+        Integer id;
         Integer montoTotal;
         Integer montoRecuperado;
         String estado_deuda;
         Integer iduser;
 
 
-        public Integer getIdDeuda() {
-            return idDeuda;
+        public Integer getId() {
+            return id;
         }
 
-        public void setIdDeuda(Integer idDeuda) {
-            this.idDeuda = idDeuda;
+        public void setId(Integer id) {
+            this.id = id;
         }
 
         public Integer getMontoTotal() {
