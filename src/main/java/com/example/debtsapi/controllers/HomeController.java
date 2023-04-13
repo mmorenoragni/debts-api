@@ -3,10 +3,7 @@ package com.example.debtsapi.controllers;
 import com.example.debtsapi.entities.Deuda;
 import com.example.debtsapi.service.DeudaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -21,16 +18,16 @@ public class HomeController {
     //----------------------------------------------------------------------------------------------------------
 
     @PostMapping("/crearDeuda")
-    public void crearCuenta(@RequestBody Deuda deuda){
+    public String crearCuenta(@RequestBody Deuda deuda){
        deudaService.crearDeuda(deuda.getMontoTotal(), deuda.getMontoRecuperado(),
                deuda.getEstado_deuda(),deuda.getIduser());
+       return "deuda creada con exito";
     }
 
 
-    @PostMapping("/buscarDeuda")
-    public Optional<Deuda> buscarDeuda(@RequestBody Deuda deuda){
-
-     Optional<Deuda> deudaId=  deudaService.buscarDeuda(deuda.getId());
+    @GetMapping("/buscarDeuda/{id}")
+    public Optional<Deuda> buscarDeuda(@PathVariable Integer id){
+     Optional<Deuda> deudaId=  deudaService.buscarDeuda(id);
 
      return deudaId;
     }
