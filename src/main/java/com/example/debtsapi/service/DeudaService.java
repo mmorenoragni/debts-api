@@ -30,6 +30,12 @@ public class DeudaService {
         return deudaJpa;
     }
 
+    public Integer numerox(Integer num){
+        Integer met=+num;
+
+        return met;
+    }
+
     public void actualizarDeuda (Integer id_Deuda, Integer monto_Total, Integer monto_Recuperado,
             String estado_Deuda, Integer id_User){
         buscarDeuda(id_Deuda);
